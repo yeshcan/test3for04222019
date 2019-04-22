@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+     xmlns="http://www.springframework.org/schema/beans"
+     xmlns:beans="http://www.springframework.org/schema/beans"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:cc="http://www.capeclear.com/assembly/10"
+     xmlns:cloud="urn:com.workday/esb/cloud/10.0"
+     xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
+     xmlns:pi="urn:com.workday/picof"
+     xmlns:wd="urn:com.workday/bsvc"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ 
+	<cc:assembly id="WorkdayAssembly" version="2019.6">
+        <cc:workday-in id="StartHere" routes-to="AsyncMediation">
+            <cc:integration-system name="iNTEGRATION"/>
+        </cc:workday-in>
+        <cc:async-mediation id="AsyncMediation">
+            <cc:steps>
+                <cc:write id="Write" output="message">
+                    <cc:message>
+                        <cc:text>&quot;&quot;,&quot;INVOICE CODING FORM&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;Page 1&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;Cushman &amp; Wakefield ULC&quot;,&quot;Invoice Amount before Tax&quot;,&quot;&quot;,&quot;Submitted By&quot;,&quot;Yeswanth Anand/USA&quot;&#xD;
+&quot;POI Business Interiors Inc&quot;,&quot;Invoice Amount including Tax&quot;,&quot;3957&quot;,&quot;Email Address&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;GST&quot;,&quot;&quot;,&quot;Date&quot;,&quot;19-Mar-2019&quot;&#xD;
+&quot;309700&quot;,&quot;HST&quot;,&quot;455.23&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;CAD - Canadian Dollar&quot;,&quot;QST&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;LINE 1&quot;,&quot;LINE 2&quot;,&quot;LINE 3&quot;,&quot;LINE 4&quot;,&quot;LINE 5&quot;&#xD;
+&quot;13th month&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;CA Team #001&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;3501.77&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;04402 - Canada National&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;LC006126 - C - CAN - Toronto - 161 Bay St.&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;CC0000 - No Cost Center General &amp; Admin&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;BU0000 - Business Services&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;LINE 6&quot;,&quot;LINE 7&quot;,&quot;LINE 8&quot;,&quot;LINE 9&quot;,&quot;LINE 10&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;&#xD;
+&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;</cc:text>
+                    </cc:message>
+                </cc:write>
+                <cc:csv-to-xml id="CsvToXml" separator=","/>
+                <cc:log id="Log">
+                    <cc:log-message>
+                        <cc:text>***fINALoUTPUT**</cc:text>
+                        <cc:message-content/>
+                    </cc:log-message>
+                </cc:log>
+            </cc:steps>
+        </cc:async-mediation>
+	</cc:assembly>
+
+</beans>
