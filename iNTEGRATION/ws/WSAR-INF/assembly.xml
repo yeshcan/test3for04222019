@@ -14,7 +14,7 @@
         <cc:workday-in id="StartHere" routes-to="AsyncMediation">
             <cc:integration-system name="iNTEGRATION"/>
         </cc:workday-in>
-        <cc:async-mediation id="AsyncMediation">
+        <cc:async-mediation id="AsyncMediation" routes-to="SyncMediation">
             <cc:steps>
                 <cc:write id="Write" output="message">
                     <cc:message>
@@ -69,6 +69,23 @@
                 </cc:log>
             </cc:steps>
         </cc:async-mediation>
+        <cc:sync-mediation id="SyncMediation">
+            <cc:request-steps>
+                <cc:eval id="Eval"/>
+                <cc:log id="Log">
+                    <cc:log-message>
+                        <cc:message-content/>
+                    </cc:log-message>
+                </cc:log>
+            </cc:request-steps>
+            <cc:response-steps>
+                <cc:write id="Write">
+                    <cc:message>
+                        <cc:message-content/>
+                    </cc:message>
+                </cc:write>
+            </cc:response-steps>
+        </cc:sync-mediation>
 	</cc:assembly>
 
 </beans>
